@@ -5,6 +5,6 @@
 
 int main()
 {
-    jogoDaVida();
+    jogoDaVida();//funcao principal que roda o jogo
     return 0;
 }
