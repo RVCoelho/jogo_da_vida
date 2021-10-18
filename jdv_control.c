@@ -10,9 +10,9 @@ void limpaMundo();
 void jogoDaVida()
 {
     int o;
-    while(o!=0)
+    while(o!=0) //loop que faz o jogo funcionar
     {
-        o=menu();
+        o=menu(); //numero da opcao selecionada que sera usada no switch
         switch(o)
         {
             case 1:
@@ -40,18 +40,18 @@ void jogoDaVida()
     }
 }
 
-void apresentaMundo()
+void apresentaMundo() //funcao que apresenta como o mundo esta atualmente
 {
     int i, k;
 
     printf("\t");
-    for(i=1;i<=mundo.tam;i++)
+    for(i=1;i<=mundo.tam;i++)//enumera as colunas
         printf("%d\t", i);
     printf("\n");
     
     for(i=1;i<=mundo.tam;i++)
     {
-        printf("%d\t", i);
+        printf("%d\t", i);//enumera as linhas
         for(k=0;k<mundo.tam;k++)
         {
             if(mundo.status[i][k]=='M') //morto
@@ -64,7 +64,7 @@ void apresentaMundo()
 }
 
 
-void geraMundo()
+void geraMundo()//funcao que gera o mundo inicial
 {
     int i, k;
 
@@ -72,7 +72,7 @@ void geraMundo()
     {
         printf("Escolha o tamanho do mundo (maximo: 100): ");
         scanf("%d", &mundo.tam);
-    }while(mundo.tam<1 || mundo.tam>100);
+    }while(mundo.tam<1 || mundo.tam>100);//nao permite valores sem sentido ou acima do valor maximo permitido
 
     for(i=1;i<=mundo.tam;i++)
     {
@@ -82,7 +82,7 @@ void geraMundo()
     apresentaMundo();
 }
 
-void selecionaVivos()
+void selecionaVivos()//
 {
     int vivasInicio, aux1, aux2, i, k;
 
@@ -90,7 +90,7 @@ void selecionaVivos()
     {
         printf("Quantas celulas vivas voce vai querer colocar no mundo?: ");
 	    scanf("%d",&vivasInicio);
-    }while(vivasInicio<1);
+    }while(vivasInicio<1);//nao permite valores sem sentido
 	printf("\n");
 
 	for(i=1;i<=vivasInicio;i++)
@@ -105,7 +105,7 @@ void selecionaVivos()
     apresentaMundo();
 }
 
-void limpaMundo()
+void limpaMundo()//funcao que torna todas as celulas mortas
 {
     int aux, i, j;
 
