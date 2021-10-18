@@ -1,6 +1,5 @@
 int menu();
 
-
 int menu()
 {
     int x;
@@ -8,10 +7,12 @@ int menu()
     printf("---------------------------------\n");
     printf("1 - Criar um novo mundo\n");
     printf("2 - Preparar e salvar um mundo inicial\n");
-    printf("3 - Recuperar um mundo inicial anterior\n");
-    printf("4 - Iniciar o mundo\n");
-    printf("5 - Mostrar o mundo final apos o processo\n");
-    printf("6 - Limpar o mundo\n");
+    printf("3 - Iniciar o mundo\n");
+    printf("4 - Mostrar o mundo final apos o processo\n");
+    printf("5 - Limpar o mundo\n");
     printf("0 - Sair\n");
+    printf("Selecione uma opcao dos numeros acima: ");
+    scanf("%d",&x);
+    printf("\n");
     return x;
 }
