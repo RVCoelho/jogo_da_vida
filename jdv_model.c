@@ -1,13 +1,5 @@
-#define MAX 100
-
-typedef struct 
+struct mundo1
 {
-    int mundo[MAX][MAX];
-
-} matriz;
-
-typedef struct 
-{
-    char status;
-
-} célula;
+    char status[100][100];
+    int tam;
+} mundo;
