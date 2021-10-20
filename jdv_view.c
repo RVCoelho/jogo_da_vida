@@ -1,4 +1,5 @@
 int menu();
+void apresentaMundo();
 
 int menu()
 {
@@ -15,4 +16,28 @@ int menu()
     scanf("%d",&x);
     printf("\n");
     return x;
+}
+
+void apresentaMundo() //funcao que apresenta como o mundo esta atualmente
+{
+    int i, k;
+
+    printf("\t");
+    for(i=1;i<=tam;i++)//enumera as colunas
+        printf("%d\t", i);
+    printf("\n");
+
+    for(i=1;i<=tam;i++)
+    {
+        printf("%d\t", i);//enumera as linhas
+        for(k=1;k<=tam;k++)
+        {
+            if(matriz[i][k]=='M') //morto
+                printf(" \t");
+            else if(matriz[i][k]=='V') //vivo
+                printf("o\t");
+        }
+        printf("\n");
+    }
+    
 }
