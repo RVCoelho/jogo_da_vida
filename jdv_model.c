@@ -1,29 +1,27 @@
-struct mundo1
-{
-    char status[100][100];//variavel que determina se a celula esta viva(V) ou morta(M)
-    int tam;//variavel que determina o tamanho da matriz
-} mundo;
+char matriz[100][100];
+int tam;
 
-struct vivos1 //vivos atuais
+typedef struct cell
 {
-    int celula[100][100];
-    int cont; //contador de celulas
-} vivos;
+    int lin, col;
+} Tcelula; //tipo celula
 
-struct mortosV1 //mortos vizinhos atuais
+typedef struct lista
 {
-    int celula[100][100];
     int cont;
-} mortosV;
+    Tcelula Celula[500];
+} Tlista;
 
-struct vivosPG1 //vivos da proxima geracao
-{
-    int celula[100][100];
-    int cont;
-} vivosPG;
+Tlista Lvivos;
+Tlista Lmortos;
+Tlista LvivosP; //proxima geracao
+Tlista LmortosP;
 
-struct mortosVPG1 //mortos vizinhos da proxima geracao
-{
-    int celula[100][100];
-    int cont;
-} mortosVPG;
+/*
+como carregar a lista:
+Lvivos.cont=0;
+i=Lvivos.cont;
+Lvivos.Celula[i].lin = 5;
+Lvivos.Celula[i].col = 7;
+Lvivos.cont++;
+*/
