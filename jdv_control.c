@@ -3,7 +3,6 @@
 
 void jogoDaVida();
 void geraMundo();
-void apresentaMundo();
 void selecionaVivos();
 void limpaMundo();
 
@@ -40,29 +39,6 @@ void jogoDaVida()
     }
 }
 
-void apresentaMundo() //funcao que apresenta como o mundo esta atualmente
-{
-    int i, k;
-
-    printf("\t");
-    for(i=1;i<=mundo.tam;i++)//enumera as colunas
-        printf("%d\t", i);
-    printf("\n");
-    
-    for(i=1;i<=mundo.tam;i++)
-    {
-        printf("%d\t", i);//enumera as linhas
-        for(k=0;k<mundo.tam;k++)
-        {
-            if(mundo.status[i][k]=='M') //morto
-                printf(".\t");
-            else if(mundo.status[i][k]=='V') //vivo
-                printf("o\t");
-        }
-        printf("\n");
-    }
-}
-
 
 void geraMundo()//funcao que gera o mundo inicial
 {
@@ -71,13 +47,13 @@ void geraMundo()//funcao que gera o mundo inicial
     do
     {
         printf("Escolha o tamanho do mundo (maximo: 100): ");
-        scanf("%d", &mundo.tam);
-    }while(mundo.tam<1 || mundo.tam>100);//nao permite valores sem sentido ou acima do valor maximo permitido
+        scanf("%d", &tam);
+    }while(tam<1 || tam>100);//nao permite valores sem sentido ou acima do valor maximo permitido
 
-    for(i=1;i<=mundo.tam;i++)
+    for(i=1;i<=tam;i++)
     {
-        for(k=0;k<mundo.tam;k++)
-            mundo.status[i][k]='M';
+        for(k=0;k<tam;k++)
+            matriz[i][k]='M';
     }
     apresentaMundo();
 }
@@ -85,21 +61,25 @@ void geraMundo()//funcao que gera o mundo inicial
 void selecionaVivos()//
 {
     int vivasInicio, aux1, aux2, i, k;
-
+    Lvivos.cont=0;
+    i=Lvivos.cont;
 	do
     {
         printf("Quantas celulas vivas voce vai querer colocar no mundo?: ");
 	    scanf("%d",&vivasInicio);
     }while(vivasInicio<1);//nao permite valores sem sentido
 	printf("\n");
-
-	for(i=1;i<=vivasInicio;i++)
+    
+	for(i=0;i<vivasInicio;i++)
     {
         aux1=0;
         aux2=0;
-        printf("Selecione a coordenada da celula viva #%d: ",i);
+        printf("Selecione a coordenada da celula viva #%d: ",i+1);
         scanf("%d %d",&aux1, &aux2);
-        mundo.status[aux1][aux2-1]='V';
+        Lvivos.Celula[i+1].lin = aux1;
+        Lvivos.Celula[i+1].col = aux2;
+        Lvivos.cont++;
+        matriz[aux1][aux2]='V';
         printf("\n");
     }
     apresentaMundo();
@@ -113,10 +93,13 @@ void limpaMundo()//funcao que torna todas as celulas mortas
 	scanf("%d",&aux);
 	if(aux==1)
     {
-        for(i=0;i<=mundo.tam;i++)
+        for(i=0;i<=tam;i++)
         {
-            for(j=0;j<=mundo.tam;j++)
-                mundo.status[i][j] = 'M';
+            for(j=0;j<=tam;j++)
+                matriz[i][j] = 'M';
+            Lvivos.Celula[i+1].lin = 0;
+            Lvivos.Celula[i+1].col = 0;
+            Lvivos.cont=0;
         }
         apresentaMundo();
     }
