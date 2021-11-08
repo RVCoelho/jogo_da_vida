@@ -1,10 +1,12 @@
-int menu();
-void apresentaMundo();
+int menu();//menu principal
+void apresentaMundo();//funcao que apresenta como o mundo esta atualmente
+int quantasGeracoes();//pergunta ao usuario quantas geracoes ocorrerao
+int quantoTempo();//pergunta ao usuario quanto tempo (em segundos) havera entre cada geracao
 
-int menu()
+int menu()//menu principal
 {
     int x;
-    printf("    JOGO DA VIDA\n");
+    printf("\t  JOGO DA VIDA\n");
     printf("---------------------------------\n");
     printf("1 - Criar um novo mundo\n");
     printf("2 - Preparar e salvar um mundo inicial\n");
@@ -22,22 +24,38 @@ void apresentaMundo() //funcao que apresenta como o mundo esta atualmente
 {
     int i, k;
 
-    printf("\t");
+    printf("    ");
     for(i=1;i<=tam;i++)//enumera as colunas
-        printf("%d\t", i);
+        printf("%d  ", i);
     printf("\n");
 
     for(i=1;i<=tam;i++)
     {
-        printf("%d\t", i);//enumera as linhas
+        printf("%2.d  ", i);//enumera as linhas
         for(k=1;k<=tam;k++)
         {
             if(matriz[i][k]=='M') //morto
-                printf(" \t");
+                printf(".  ");
             else if(matriz[i][k]=='V') //vivo
-                printf("o\t");
+                printf("o  ");
         }
         printf("\n");
     }
-    
+}
+
+int quantasGeracoes()//pergunta ao usuario quantas geracoes ocorrerao
+{
+    int x;
+    printf("Quantas geracoes voce deseja que ocorram? ");
+    scanf("%d", &x);
+    printf("\n");
+    return x;
+}
+
+int quantoTempo()//pergunta ao usuario quanto tempo (em segundos) havera entre cada geracao
+{
+    int x;
+    printf("Quanto tempo de intervalo voce deseja entre cada geracao? ");
+    scanf("%d", &x);
+    return x;
 }
